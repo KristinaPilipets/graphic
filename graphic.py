@@ -3,8 +3,9 @@ from math import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-def test():
+def test(event):
     global a,b,c
+    flag=""
     if (a.get()!="" and b.get()!="" and c.get()!=""):
         a_=int(a.get())
         b_=int(b.get())
@@ -93,8 +94,9 @@ c.pack(side=LEFT)
 o=Label(aken,text="=0",font="Calibri 26",fg="green")
 o.pack(side=LEFT)
  
-vastus=Button(aken,text="Решить",font="Calibri 26",fg="black",bg="green",relief=GROOVE, command=test)#RAISED, SUNKEN
+vastus=Button(aken,text="Решить",font="Calibri 26",fg="black",bg="green",relief=GROOVE)#RAISED, SUNKEN
 vastus.pack(side=RIGHT)
+vastus.bind("<Button-1>",test)
 
 grafik=Button(aken,text="График",font="Calibri 26",fg="black",bg="green",relief=GROOVE,command=graafik)#RAISED, SUNKEN
 grafik.pack(side=RIGHT)
