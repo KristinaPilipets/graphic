@@ -28,7 +28,7 @@ def kliko(event):
     lbl.configure(text=klik)
 
 aken=Tk()
-aken.title("Hujna")
+aken.title("kp")
 aken.geometry("400x600")
 
 nupp=Button(aken,text="Я кнопка\nНажми меня!",font="Arial 20",fg="lightblue",bg="black",height=4,width=20,relief=GROOVE)#RAISED, SUNKEN
