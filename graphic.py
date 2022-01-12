@@ -72,7 +72,7 @@ def big(event):
         t=0
 
 def whale():
-    pass
+    x=
 def glasses():
     pass
 def umbrella():
