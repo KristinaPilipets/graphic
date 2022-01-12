@@ -6,6 +6,8 @@ import numpy as np
 def test():
     global a,b,c
     flag=""
+    D=0
+    t=0
     if (a.get()!="" and b.get()!="" and c.get()!=""):
         a_=int(a.get())
         b_=int(b.get())
@@ -57,49 +59,67 @@ def graafik():
     else:
         text=f"График нет возможности построить"
     sutsav.configure(text=f"D={D}\n{t}\n{text}") 
-
+t=0
 def big(event):
-    aken.geometry(str(aken.winfo_width()+14)+"x"+str(aken.winfo_height()+20))
+    global t
+    if t==0:
+        aken.geometry(str(aken.winfo_width()+100)+"x"+str(aken.winfo_height()+200))
+        arg.configure(text="уменьшить",font="Calibri 26",fg="black",bg="green",relief=GROOVE)
+        t=1
+    else:
+        arg.configure(text="Увеличить",font="Calibri 26",fg="black",bg="green",relief=GROOVE)
+        aken.geometry(str(aken.winfo_width()-100)+"x"+str(aken.winfo_height()-200))
+        t=0
 
-def small(event):
-    aken.geometry(str(aken.winfo_width()-14)+"x"+str(aken.winfo_height()-20))
+def whale():
+    pass
+def glasses():
+    pass
+def umbrella():
+    pass
 
 aken=Tk()
 aken.title("Квадратные уровнения")
-aken.geometry("700x350")
+aken.geometry("650x200")
+f1=Frame(aken,width=650,height=260)
+f2=Frame(aken,width=650,height=260)
+f1.pack(side=TOP)
+f2.pack(side=BOTTOM)
 
-lbl=Label(aken,text="Решение квадратного уравнения",font="Calibri 26",fg="green",bg="lightblue",justify=CENTER)
+lbl=Label(f1,text="Решение квадратного уравнения",font="Calibri 26",fg="green",bg="lightblue",justify=CENTER)
 lbl.pack()
-sutsav=Label(aken,text="Ответ",width=60,font="Calibri 26",fg="green",bg="yellow")
+sutsav=Label(f1,text="Ответ",width=60,font="Calibri 20",fg="green",bg="yellow")
 sutsav.pack(side=BOTTOM)
 
-arg=Button(aken,text="Увеличить",font="Calibri 26",fg="black",bg="green",relief=GROOVE)
-arg.pack(side=BOTTOM)
+arg=Button(f2,text="Увеличить",font="Calibri 26",fg="black",bg="green",relief=GROOVE)
+arg.pack(side=TOP)
 arg.bind("<Button-1>",big)
 
-ar=Button(aken,text="Уменшить",font="Calibri 26",fg="black",bg="green",relief=GROOVE)
-ar.pack(side=BOTTOM)
-ar.bind("<Button-1>",small)
 
-a=Entry(aken,width=3,font="Arial 20",fg="green",bg="lightblue")
+a=Entry(f1,width=3,font="Arial 20",fg="green",bg="lightblue")
 a.pack(side=LEFT)
-x1=Label(aken,text="x**2+",font="Calibri 26",fg="green")
+x1=Label(f1,text="x**2+",font="Calibri 26",fg="green")
 x1.pack(side=LEFT)
-b=Entry(aken,width=3,font="Arial 20",fg="green",bg="lightblue")
+b=Entry(f1,width=3,font="Arial 20",fg="green",bg="lightblue")
 b.pack(side=LEFT)
-x2=Label(aken,text="x+",font="Calibri 26",fg="green")
+x2=Label(f1,text="x+",font="Calibri 26",fg="green")
 x2.pack(side=LEFT)
-c=Entry(aken,width=3,font="Arial 20",fg="green",bg="lightblue")
+c=Entry(f1,width=3,font="Arial 20",fg="green",bg="lightblue")
 c.pack(side=LEFT)
-o=Label(aken,text="=0",font="Calibri 26",fg="green")
+o=Label(f1,text="=0",font="Calibri 26",fg="green")
 o.pack(side=LEFT)
  
-vastus=Button(aken,text="Решить",font="Calibri 26",fg="black",bg="green",relief=GROOVE,command=test)#RAISED, SUNKEN
+vastus=Button(f1,text="Решить",font="Calibri 26",fg="black",bg="green",relief=GROOVE,command=test)#RAISED, SUNKEN
 vastus.pack(side=RIGHT)
 
-
-grafik=Button(aken,text="График",font="Calibri 26",fg="black",bg="green",relief=GROOVE,command=graafik)#RAISED, SUNKEN
+grafik=Button(f1,text="График",font="Calibri 26",fg="black",bg="green",relief=GROOVE,command=graafik)#RAISED, SUNKEN
 grafik.pack(side=RIGHT)
 
+r1=Radiobutton(f2,text="Кит",font="Calibri 26",fg="black",bg="green",relief=GROOVE, command=whale)
+r1.pack()
+r2=Radiobutton(f2,text="Очки",font="Calibri 26",fg="black",bg="green",relief=GROOVE, command=glasses)
+r2.pack()
+r3=Radiobutton(f2,text="Зонтик",font="Calibri 26",fg="black",bg="green",relief=GROOVE, command=umbrella)
+r3.pack()
 
 aken.mainloop()
